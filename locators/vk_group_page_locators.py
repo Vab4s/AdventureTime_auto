@@ -1,0 +1,1 @@
+BODY = ('xpath', '//div[@id="page_body"]')

@@ -8,7 +8,7 @@ class BasePage:
     @allure.step('Открыть браузер Chrome')
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 15, 1)
+        self.wait = WebDriverWait(self.driver, 10, 1)
         self.action = ActionChains(self.driver)
 
     @allure.step('Перейти на URL, подождать загрузку элемента')
@@ -46,10 +46,10 @@ class BasePage:
         element = self.wait_element_visibility(element_locator)
         self.action.scroll_to_element(element).perform()
 
-    @allure.step('Переключиться на последнюю открытую вкладку')
+    @allure.step('Переключиться на последнюю открытую вкладку/окно')
     def switch_to_last_opened_tab(self):
         list_of_tabs = self.driver.window_handles
-        self.driver.switch_to.window(list_of_tabs[1])
+        self.driver.switch_to.window(list_of_tabs[-1])
 
     @allure.step('Переключиться на iframe')
     def switch_to_iframe(self, locator):

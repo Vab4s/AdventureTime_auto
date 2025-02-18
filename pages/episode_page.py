@@ -6,6 +6,7 @@ from pages.base_page import BasePage
 from locators.episode_page_locators import *
 from URLs.urls import *
 from functions.random_episode import random_episode, random_episode_without_extreme_episodes
+from functions.social_web import social_web
 
 class EpisodePage(BasePage):
     @allure.step('Открыть страницу эпизода')
@@ -49,6 +50,11 @@ class EpisodePage(BasePage):
     @allure.step('Нажать кнпоку предыдущего эпизода')
     def click_previous_episode_button(self):
         self.click_element(PREVIOUS_PAGE_BUTTON)
+
+    @allure.step('Нажать на кнопку социальной сети/мессенджера')
+    def click_social_web_button(self, social_web_name):
+        social_web_button_locator = social_web(social_web_name)
+        self.click_element(social_web_button_locator)
 
     @allure.step('Проверка загрузки плеера')
     def video_player_assertion(self):
@@ -108,6 +114,14 @@ class EpisodePage(BasePage):
     @allure.step('Проверка кнопок, перенаправляющих на предыдущий и следующий эпизоды')
     def previous_next_button_assertion(self, url):
         if self.url_changes_from(url) and self.video_player_assertion():
+            return True
+        else:
+            return False
+
+    @allure.step('Проверка, что название соц.сети содержится в URL открывшегося окна')
+    def social_buttons_assertion(self, social_web_name):
+        self.switch_to_last_opened_tab()
+        if social_web_name in self.get_current_url():
             return True
         else:
             return False

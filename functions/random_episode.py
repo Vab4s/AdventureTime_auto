@@ -14,7 +14,7 @@ def random_episode() -> tuple:
 #     chosen_episode = random.choice(season_episodes_list)
 #     return chosen_season, chosen_episode
 
-def random_episode_without_extreme_episodes(test_button) -> tuple:
+def random_episode_without_extreme_episodes(test_button: str) -> tuple:
     chosen_season = random.choice(list(episodes_dict.keys())[1:-1])
     season_episodes_list = episodes_dict[chosen_season]
     if test_button == 'next':

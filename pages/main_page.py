@@ -20,8 +20,13 @@ class MainPage(BasePage):
         season_number = self.format_locator_with_one_parameter(MAIN_MENU_LINK, season)
         self.click_element(season_number)
 
+    @allure.step('Кликнуть на сезон в главнм меню')
+    def click_season_menu_text(self, season_link_name: str):
+        season_number = self.format_locator_with_one_parameter(MAIN_MENU_LINK_TEXT, season_link_name)
+        self.click_element(season_number)
+
     @allure.step('Кликнуть на сезон на главной странице')
-    def click_season_main(self, season):
+    def click_season_main(self, season: str):
         season_number = self.format_locator_with_one_parameter(SEASON_LINK, season)
         self.scroll_to_element(season_number)
         self.click_element(season_number)

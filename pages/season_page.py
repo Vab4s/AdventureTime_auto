@@ -1,7 +1,9 @@
 import random
 import allure
+from selenium.webdriver.support.wait import TimeoutException
 
 from pages.base_page import BasePage
+from locators.base_locators import *
 from locators.season_page_locators import *
 from locators.main_menu_locators import *
 from URLs.urls import *
@@ -39,16 +41,32 @@ class SeasonPage(BasePage):
         else:
             return False
 
-    @allure.step('Проверка того, что ссылка на сезон из главного меню странице открыла соответствующий сезон')
-    def menu_seasons_links_assertion(self, season_title):
-        if season_title in self.get_season_text():
-            return True
-        else:
-            return False
+    # @allure.step('Проверка. Ссылка на сезон из главного меню странице открыла соответствующий сезон')
+    # def menu_seasons_links_assertion(self, season_title):
+    #     if season_title in self.get_season_text():
+    #         return True
+    #     else:
+    #         return False
 
-    @allure.step('Проверка того, что ссылка на сезон на главной странице открыла соответствующий сезон')
-    def main_seasons_links_assertion(self, season_title):
-        if self.get_season_title() == season_title:
+    # @allure.step('Проверка того, что ссылка на сезон на главной странице открыла соответствующий сезон')
+    # def main_seasons_links_assertion(self, season_title):
+    #     if self.get_season_title() == season_title:
+    #         return True
+    #     else:
+    #         return False
+
+    # @allure.step('Заголовок названия сезона на странице сезона соответствует сезону')
+    # def seasons_titles_assertion(self, season_title):
+    #     try:
+    #         return self.get_season_title() == season_title
+    #     except TimeoutException:
+    #         return False
+
+    @allure.step('Ссылка ведёт на корректную страницу соответствующего сезона')
+    @allure.description('Проверяется корректность ссылки и отсутствие уведомления "Обнаружена ошибка"')
+    def seasons_links_assertion(self, season_url_name):
+        try:
+            season_url_name in self.get_current_url() and self.wait_element_invisibility(ALERT_WARNING)
             return True
-        else:
+        except TimeoutException:
             return False

@@ -7,6 +7,7 @@ from pages.episode_page import EpisodePage
 from pages.season_page import SeasonPage
 
 
+@allure.story('Проверка страниц эпизодов')
 class TestEpisodePage:
     @allure.title('Проверка работы кнопки выбора перевода')
     @pytest.mark.parametrize('translation_type, season, episode', [('Cartoon Network', 7, '777-bonnie-neddy'),
@@ -39,10 +40,14 @@ class TestEpisodePage:
         # episode_page.go_to_episode_page()
         episode_page.go_to_random_episode_page()
         episode_page.click_report_error_button()
+
         assert episode_page.report_error_button_assertion()
 
-    # данный тест связан с тестом проверки появления формы репорта и будет пройден в случае неудачи предыдущего
+    # данный тест связан с тестом проверки появления формы репорта и не будет пройден в случае неудачи предыдущего
     @allure.title('Проверка работы кнопки "Закрыть" формы репорта')
+    @allure.description('Данный тест связан с тестом проверки появления формы репорта и не будет пройден в случае'
+                        ' неудачи предыдущего (Проверка работы кнопки "Сообщить об ошибке"'
+                        ' / test_report_error_button_click_shows_report_form)')
     def test_report_error_form_disappears_after_click_close_button(self, driver):
         episode_page = EpisodePage(driver)
         # episode_page.go_to_episode_page()

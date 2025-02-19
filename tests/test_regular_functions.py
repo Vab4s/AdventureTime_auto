@@ -1,6 +1,7 @@
 import pytest
 import allure
 
+from pages.base_page import BasePage
 from pages.main_page import MainPage
 from pages.season_page import SeasonPage
 from pages.episode_page import EpisodePage
@@ -8,48 +9,20 @@ from pages.payment_page import PaymentPage
 from pages.vk_group_page import VkGroupPage
 
 
-@allure.story('Тестирование базовых функций')
+@allure.story('Проверка базовых функций')
 class TestRegularFunctions:
     # Меню
     @allure.title('Кнопка "Домой" не активна на главной странице')
     def test_home_link_disabled_on_main_page(self, driver):
         main_page = MainPage(driver)
         main_page.go_to_main_page()
-        assert main_page.check_home_button_is_enabled() is False
+        assert main_page.check_home_button_is_disabled_assertion()
 
     @allure.title('Кнопка "Домой" активна на любой странице, кроме главной')
     def test_home_link_enabled_on_other_pages(self, driver):
         season_page = SeasonPage(driver)
         season_page.go_to_season_page()
         assert season_page.home_button_is_enabled_assertion() is True
-
-
-
-
-
-
-
-
-
-
-
-    # ТУТ КАКАЯ-ТО ХЕРНЯ!!!
-    # @allure.title('Ссылки главного меню сайта ведут на корректные страницы соответствующего сезона')
-    # @pytest.mark.parametrize("season, expected_season_title",
-    #                          [('sezon-1', 'Сезон 1'), ('sezon-2', 'Сезон 2'), ('sezon-3', 'Сезон 3'),
-    #                           ('sezon-4', 'Сезон 4'), ('sezon-5', 'Сезон 5'), ('sezon-6', 'Сезон 6'),
-    #                           ('sezon-7', 'Сезон 7'), ('sezon-8', 'Сезон 8'), ('sezon-9', 'Сезон 9'),
-    #                           ('sezon-10', 'Сезон 10'), ('mini-sezon', 'Мини-сезон'),
-    #                           ('frog-seasons', 'Сезоны лягушек'), ('distant-lands', 'Далёкие земли')
-    #                           ]
-    #                          )
-    # def test_menu_seasons_links_open_corresponding_pages(self, driver, season, expected_season_title):
-    #     main_page = MainPage(driver)
-    #     main_page.go_to_main_page()
-    #     main_page.click_season_menu(season)
-    #     season_page = SeasonPage(driver)
-    #
-    #     assert season_page.menu_seasons_links_assertion(expected_season_title)
 
     @allure.title('Ссылки главного меню сайта ведут на корректные страницы соответствующего сезона')
     @pytest.mark.parametrize("season_link_name, season_url_name",
@@ -63,17 +36,10 @@ class TestRegularFunctions:
     def test_menu_seasons_links_open_corresponding_pages(self, driver, season_link_name, season_url_name):
         main_page = MainPage(driver)
         main_page.go_to_main_page()
-        main_page.click_season_menu_text(season_link_name)
+        main_page.click_season_menu(season_link_name)
         season_page = SeasonPage(driver)
 
         assert season_page.seasons_links_assertion(season_url_name)
-
-
-
-
-
-
-
 
     # Боковое меню
     @allure.title('Кнопка "Случайная серия" открывает случайную серию')
@@ -125,3 +91,10 @@ class TestRegularFunctions:
         main_page.scroll_to_the_end_of_page()
 
         assert main_page.go_up_button_is_visible_assertion()
+
+    @allure.title('Некорректная ссылка ведёт на страницу с сообщением "Обнаружена ошибка"')
+    def test_negative_incorrect_link_leads_to_page_with_warning(self, driver):
+        base_page = BasePage(driver)
+        base_page.go_to('https://adventuretime.ru/this_is_any_incorrect_page/')
+
+        assert base_page.warning_message_assertion()

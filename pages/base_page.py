@@ -1,8 +1,11 @@
+import allure
+from selenium.webdriver.support.wait import TimeoutException
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ex
 from selenium.webdriver.common.action_chains import ActionChains
-import allure
 
+from locators.base_locators import *
 
 class BasePage:
     @allure.step('Открыть браузер Chrome')
@@ -72,3 +75,11 @@ class BasePage:
     def format_string_with_two_parameters(self, string, parameter_one, parameter_two):
         string = string.format(parameter_one, parameter_two)
         return string
+
+    @allure.step('Сообщение "Обнаружена ошибка" присутствует на странице')
+    def warning_message_assertion(self):
+        try:
+            self.wait_element_visibility(ALERT_WARNING)
+            return True
+        except TimeoutException:
+            return False

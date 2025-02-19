@@ -1,10 +1,12 @@
 import allure
-
 from selenium.webdriver.support.wait import TimeoutException
 
 from pages.base_page import BasePage
+
 from locators.episode_page_locators import *
+
 from URLs.urls import *
+
 from functions.random_episode import random_episode, random_episode_without_extreme_episodes
 from functions.social_web import social_web
 
@@ -47,7 +49,7 @@ class EpisodePage(BasePage):
     def click_next_episode_button(self):
         self.click_element(NEXT_PAGE_BUTTON)
 
-    @allure.step('Нажать кнпоку предыдущего эпизода')
+    @allure.step('Нажать кнопку предыдущего эпизода')
     def click_previous_episode_button(self):
         self.click_element(PREVIOUS_PAGE_BUTTON)
 
@@ -56,7 +58,7 @@ class EpisodePage(BasePage):
         social_web_button_locator = social_web(social_web_name)
         self.click_element(social_web_button_locator)
 
-    @allure.step('Проверка загрузки плеера')
+    @allure.step('Видеопроигрыватель присутствует на странице')
     def video_player_assertion(self):
         try:
             self.wait_element_visibility(VIDEO_PLAYER)
@@ -64,14 +66,14 @@ class EpisodePage(BasePage):
         except TimeoutException:
             return False
 
-    @allure.step('Проверка того, что после нажатия кнпки "К списку" открывается URL оответствующего сезона')
+    @allure.step('Открывается URL соответствующего сезона')
     def back_to_list_button_assertion(self, current_link_2, current_link_1):
         if current_link_2 in current_link_1:
             return True
         else:
             return False
 
-    @allure.step('Проверка наличия кнопки "Сообщить об ошибке"')
+    @allure.step('Появление формы "Сообщить об ошибке"')
     def report_error_button_assertion(self):
         try:
             self.wait_element_visibility(REPORT_ERROR_FORM)
@@ -79,7 +81,7 @@ class EpisodePage(BasePage):
         except TimeoutException:
             return False
 
-    @allure.step('Проверка того, что форма репорта закрылась по нажатии кнопки "закрыть"')
+    @allure.step('Форма репорта закрылась по нажатии кнопки "закрыть"')
     def close_report_form_assertion(self):
         try:
             self.wait_element_invisibility(REPORT_ERROR_FORM)
@@ -87,7 +89,7 @@ class EpisodePage(BasePage):
         except TimeoutException:
             return False
 
-    @allure.step('Проверка изменения типа перевода после нажатия соотв. кнопки (проверка путём сравнения заголовка)')
+    @allure.step('Изменение типа перевода (проверка путём сравнения заголовка)')
     def translation_type_assertion(self, translation_type):
         translation_title_type_locator = self.format_locator_with_one_parameter(TRANSLATION_TITLE, translation_type)
         try:
@@ -96,7 +98,7 @@ class EpisodePage(BasePage):
         except TimeoutException:
             return False
 
-    @allure.step('Проверка наличия блока комментариев ВК на странице')
+    @allure.step('Блока комментариев ВК присутствует на странице')
     def vk_comments_form_is_present_assertion(self):
         try:
             self.wait_element_visibility(VK_COMMENTS_BLOCK)
@@ -104,21 +106,22 @@ class EpisodePage(BasePage):
         except TimeoutException:
             return False
 
-    @allure.step('Проверка кнопки "Случайный эпизод". Нажатие на кнопку направляет на страницу, отличную от текущей.')
+    @allure.step('Открыта корректная страница, отличная от предыдущей')
+    @allure.description('URL страницы изменился и на странице присутствует видеопроигрыватель')
     def random_episode_button_assertion(self, episode_url_one, episode_url_two):
         if (episode_url_one != episode_url_two) and self.video_player_assertion():
             return True
         else:
             return False
 
-    @allure.step('Проверка кнопок, перенаправляющих на предыдущий и следующий эпизоды')
+    @allure.step('URL страницы изменился и на странице присутствует видеопроигрыватель')
     def previous_next_button_assertion(self, url):
         if self.url_changes_from(url) and self.video_player_assertion():
             return True
         else:
             return False
 
-    @allure.step('Проверка, что название соц.сети содержится в URL открывшегося окна')
+    @allure.step('Название соц.сети содержится в URL открывшегося окна')
     def social_buttons_assertion(self, social_web_name):
         self.switch_to_last_opened_tab()
         if social_web_name in self.get_current_url():

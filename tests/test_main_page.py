@@ -5,6 +5,7 @@ from pages.main_page import MainPage
 from pages.season_page import SeasonPage
 
 
+@allure.story('Проверка главной страницы')
 class TestMainPage:
     # Тело/главное меню эпизодов
     @allure.title('Проверка меню главной страницы')

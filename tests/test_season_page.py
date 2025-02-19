@@ -5,6 +5,7 @@ from pages.season_page import SeasonPage
 from pages.episode_page import EpisodePage
 
 
+@allure.story('Проверка страниц сезонов')
 class TestSeasonPage:
     @allure.title('Ссылка на эпизод открывает страницу с эпиходом')
     @allure.description('Проверяется наличием на странице видеоплеера')

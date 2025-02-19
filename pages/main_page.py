@@ -1,13 +1,14 @@
 import random
 import time
 import allure
-
 from selenium.webdriver.support.wait import TimeoutException
 
 from pages.base_page import BasePage
+
 from locators.base_locators import *
 from locators.main_menu_locators import *
 from locators.main_page_locators import *
+
 from URLs.urls import *
 
 class MainPage(BasePage):
@@ -15,14 +16,14 @@ class MainPage(BasePage):
     def go_to_main_page(self):
         self.go_to(MAIN_PAGE_URL)
 
-    @allure.step('Кликнуть на сезон в главнм меню')
-    def click_season_menu(self, season):
-        season_number = self.format_locator_with_one_parameter(MAIN_MENU_LINK, season)
-        self.click_element(season_number)
+    # @allure.step('Кликнуть на сезон в главном меню')
+    # def click_season_menu(self, season):
+    #     season_number = self.format_locator_with_one_parameter(MAIN_MENU_LINK, season)
+    #     self.click_element(season_number)
 
-    @allure.step('Кликнуть на сезон в главнм меню')
-    def click_season_menu_text(self, season_link_name: str):
-        season_number = self.format_locator_with_one_parameter(MAIN_MENU_LINK_TEXT, season_link_name)
+    @allure.step('Кликнуть на сезон в главном меню')
+    def click_season_menu(self, season_link_name: str):
+        season_number = self.format_locator_with_one_parameter(MENU_LINK_TEXT, season_link_name)
         self.click_element(season_number)
 
     @allure.step('Кликнуть на сезон на главной странице')
@@ -51,7 +52,7 @@ class MainPage(BasePage):
         self.scroll_to_the_end_of_page()
         self.click_element(GOUP_BUTTON)
 
-    @allure.step('Проверка того, что кнопка "Вверх" видна')
+    @allure.step('Кнопка "Вверх" видна')
     def go_up_button_is_visible_assertion(self):
         try:
             self.wait_element_visibility(GOUP_BUTTON)
@@ -59,7 +60,7 @@ class MainPage(BasePage):
         except TimeoutException:
             return False
 
-    @allure.step('Проверка того, что кнопка "Вверх" не видна')
+    @allure.step('Кнопка "Вверх" не видна')
     def go_up_button_is_invisible_assertion(self):
         try:
             self.wait_element_invisibility(GOUP_BUTTON)
@@ -67,9 +68,9 @@ class MainPage(BasePage):
         except TimeoutException:
             return False
 
-    @allure.step('Проверка доступности кнопки "Домой"')
-    def check_home_button_is_enabled(self):
-        if len(self.driver.find_elements(*HOME_LINK)):
+    @allure.step('Кнопка "Домой" не содержит ссылку на главную страницу')
+    def check_home_button_is_disabled_assertion(self):
+        if not len(self.driver.find_elements(*HOME_LINK)):
             return True
         else:
             return False

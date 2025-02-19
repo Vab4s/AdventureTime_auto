@@ -4,22 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3387ec3d-594a-49f2-a43f-48cd57c1fffc" name="Changes" comment="#3">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/random_episode.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions/random_episode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locators/base_locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/base_locators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locators/episode_page_locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/episode_page_locators.py" afterDir="false" />
+    <list default="true" id="3387ec3d-594a-49f2-a43f-48cd57c1fffc" name="Changes" comment="#4">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/locators/main_menu_locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/main_menu_locators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locators/main_page_locators.py" beforeDir="false" afterPath="$PROJECT_DIR$/locators/main_page_locators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/base_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/episode_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/episode_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/main_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/payment_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/season_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/season_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/vk_group_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/vk_group_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_episode_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_episode_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_main_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_main_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_regular_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_regular_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_season_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_season_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,9 +87,11 @@
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_go_up_button_works_correctly.executor": "Run",
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_home_link_disabled_on_main_page.executor": "Run",
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_home_link_enabled_on_other_pages.executor": "Run",
+    "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_incorrect_link_eads_to_page_with_warning.executor": "Run",
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_menu_seasons_links_open_corresponding_pages.executor": "Run",
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_menu_seasons_links_open_corresponding_pages______2.executor": "Run",
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_menu_seasons_links_works_correctly.executor": "Run",
+    "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_negative_incorrect_link_leads_to_page_with_warning.executor": "Run",
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_payment_button_opens_yoomoney_page.executor": "Run",
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_qq.executor": "Run",
     "Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_random_episode_button_opens_random_episode.executor": "Run",
@@ -116,8 +116,8 @@
       <recent name="C:\Users\Vab\PycharmProjects\adventure_time_at\tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_menu_seasons_links_open_corresponding_pages">
-    <configuration name="Python tests for test_episode_page.TestEpisodePage.test__buttons" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_season_page.TestSeasonPage.test_episodes_links_opens_correctly">
+    <configuration name="Python tests for test_regular_functions.TestRegularFunctions.test_home_link_disabled_on_main_page" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="adventure_time_at" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -128,11 +128,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_episode_page.TestEpisodePage.test__buttons&quot;" />
+      <option name="_new_target" value="&quot;test_regular_functions.TestRegularFunctions.test_home_link_disabled_on_main_page&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_main_page.TestMainPage" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_regular_functions.TestRegularFunctions.test_incorrect_link_eads_to_page_with_warning" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="adventure_time_at" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,22 +143,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main_page.TestMainPage&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_main_page.TestMainPage.test_main_seasons_links_works_correctly" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="adventure_time_at" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_main_page.TestMainPage.test_main_seasons_links_works_correctly&quot;" />
+      <option name="_new_target" value="&quot;test_regular_functions.TestRegularFunctions.test_incorrect_link_eads_to_page_with_warning&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -177,7 +162,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_regular_functions.TestRegularFunctions.test_menu_seasons_links_open_corresponding_pages______2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_regular_functions.TestRegularFunctions.test_negative_incorrect_link_leads_to_page_with_warning" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="adventure_time_at" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -188,17 +173,32 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_regular_functions.TestRegularFunctions.test_menu_seasons_links_open_corresponding_pages______2&quot;" />
+      <option name="_new_target" value="&quot;test_regular_functions.TestRegularFunctions.test_negative_incorrect_link_leads_to_page_with_warning&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_season_page.TestSeasonPage.test_episodes_links_opens_correctly" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="adventure_time_at" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_season_page.TestSeasonPage.test_episodes_links_opens_correctly&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_season_page.TestSeasonPage.test_episodes_links_opens_correctly" />
+        <item itemvalue="Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_home_link_disabled_on_main_page" />
+        <item itemvalue="Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_negative_incorrect_link_leads_to_page_with_warning" />
+        <item itemvalue="Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_incorrect_link_eads_to_page_with_warning" />
         <item itemvalue="Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_menu_seasons_links_open_corresponding_pages" />
-        <item itemvalue="Python tests.Python tests for test_main_page.TestMainPage" />
-        <item itemvalue="Python tests.Python tests for test_main_page.TestMainPage.test_main_seasons_links_works_correctly" />
-        <item itemvalue="Python tests.Python tests for test_regular_functions.TestRegularFunctions.test_menu_seasons_links_open_corresponding_pages______2" />
-        <item itemvalue="Python tests.Python tests for test_episode_page.TestEpisodePage.test__buttons" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739905807978</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="#4">
+      <option name="closed" value="true" />
+      <created>1739970436412</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739970436412</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,45 +268,26 @@
     <MESSAGE value="#1" />
     <MESSAGE value="#2" />
     <MESSAGE value="#3" />
-    <option name="LAST_COMMIT_MESSAGE" value="#3" />
+    <MESSAGE value="#4" />
+    <option name="LAST_COMMIT_MESSAGE" value="#4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pages/base_page.py</url>
-          <line>23</line>
+          <line>26</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pages/episode_page.py</url>
-          <line>17</line>
+          <line>19</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pages/season_page.py</url>
-          <line>43</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pages/season_page.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pages/season_page.py</url>
-          <line>66</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_regular_functions.py</url>
-          <line>62</line>
+          <line>35</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_regular_functions.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

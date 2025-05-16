@@ -105,8 +105,8 @@ class TestEpisodePage:
     #     time.sleep(2)
 
     @allure.title('Проверка работы кнопок социальных сетей и мессенджеров')
-    @pytest.mark.parametrize('social_web', ['vk.com', 'ok.ru', 'mail.ru', 'x.com', 'whatsapp.com', 'skype.com', 't.me'])
-    def test__buttons(self, driver, social_web):
+    @pytest.mark.parametrize('social_web', ['vk.com', 'ok.ru', 'mail.ru', 'x.com', 'whatsapp.com', 'teams', 't.me'])
+    def test_buttons(self, driver, social_web):
         episode_page = EpisodePage(driver)
         episode_page.go_to_random_episode_page()
         episode_page.click_social_web_button(social_web)

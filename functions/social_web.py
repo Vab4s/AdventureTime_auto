@@ -15,7 +15,7 @@ def social_web(web_name: str) -> tuple:
         return VIBER_BUTTON
     elif web_name == 'whatsapp.com':
         return WATSUP_BUTTON
-    elif web_name == 'skype.com':
+    elif web_name == 'teams':
         return SKYPE_BUTTON
     elif web_name == 't.me':
         return TELEGRAM_BUTTON
